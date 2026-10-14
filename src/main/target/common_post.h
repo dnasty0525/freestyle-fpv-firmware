@@ -22,6 +22,9 @@
 
 #include "build/version.h"
 
+// FREESTYLE: fork feature switches (after config.h and target.h so boards can opt out)
+#include "freestyle/freestyle_pre.h"
+
 /*
 
     The purpose of this file is to enable / disable any firmware "gates" for features and drivers

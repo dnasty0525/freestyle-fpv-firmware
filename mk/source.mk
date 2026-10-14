@@ -457,6 +457,9 @@ COMMON_DEVICE_SRC = $(CMSIS_SRC) $(DEVICE_STDPERIPH_SRC)
 
 COMMON_SRC += $(CONFIG_SRC) $(PG_SRC) $(COMMON_DEVICE_SRC) $(RX_SRC)
 
+# FREESTYLE: fork sources
+include $(MAKE_SCRIPT_DIR)/freestyle.mk
+
 ifeq ($(EXST),yes)
 TARGET_FLAGS += -DUSE_EXST
 endif

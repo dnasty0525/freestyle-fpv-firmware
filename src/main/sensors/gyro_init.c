@@ -79,6 +79,8 @@
 
 #include "gyro_init.h"
 
+#include "freestyle/freestyle_filters.h"  // FREESTYLE
+
 // The gyro buffer is split 50/50, the first half for the transmit buffer, the second half for the receive buffer
 // This buffer is large enough for the gyros currently supported in accgyro_mpu.c but should be reviewed id other
 // gyro types are supported with SPI DMA.
@@ -263,6 +265,9 @@ void gyroInitFilters(void)
 #endif
 #ifdef USE_RPM_FILTER
     rpmFilterInit(rpmFilterConfig(), gyro.targetLooptime);
+#endif
+#ifdef USE_FREESTYLE_FILTERS
+    freestyleGyroFiltersInit(gyro.targetLooptime);  // FREESTYLE: Kalman, Smith, gyro ABG
 #endif
 
     const float k = pt1FilterGain(GYRO_IMU_DOWNSAMPLE_CUTOFF_HZ, gyro.targetLooptime * 1e-6f);

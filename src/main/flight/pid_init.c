@@ -48,6 +48,8 @@
 
 #include "pid_init.h"
 
+#include "freestyle/freestyle_filters.h"  // FREESTYLE
+
 #ifdef USE_D_MAX
 #define D_MAX_RANGE_HZ 85    // PT2 lowpass input cutoff to peak D around propwash frequencies
 #define D_MAX_LOWPASS_HZ 35  // PT2 lowpass cutoff to smooth the boost effect. Do not set to Zero to avoid div/0 error
@@ -131,6 +133,11 @@ static void tpaSpeedInit(const pidProfile_t *pidProfile)
 void pidInitFilters(const pidProfile_t *pidProfile)
 {
     STATIC_ASSERT(FD_YAW == 2, FD_YAW_incorrect); // ensure yaw axis is 2
+
+#ifdef USE_FREESTYLE_FILTERS
+    // FREESTYLE: D-term ABG (stays disabled until a looptime is set)
+    freestyleDtermFiltersInit(targetPidLooptime ? pidRuntime.dT : 0.0f);
+#endif
 
     if (targetPidLooptime == 0) {
         // no looptime set, so set all the filters to null

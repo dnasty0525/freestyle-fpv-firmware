@@ -57,6 +57,11 @@ static FAST_CODE void GYRO_FILTER_FUNCTION_NAME(void)
         // DEBUG_GYRO_SAMPLE(2) Record the post-RPM Filter value for the selected debug axis
         GYRO_FILTER_AXIS_DEBUG_SET(axis, DEBUG_GYRO_SAMPLE, 2, lrintf(gyroADCf));  //!< Gyro After RPM Filter (dbg-axis) [unit:dps]
 
+#ifdef USE_FREESTYLE_FILTERS
+        // FREESTYLE: Kalman, after RPM filter and before static filters
+        gyroADCf = freestyleGyroPreFilter(axis, gyroADCf);
+#endif
+
         // apply static notch filters and software lowpass filters
         gyroADCf = gyro.notchFilter1ApplyFn((filter_t *)&gyro.notchFilter1[axis], gyroADCf);
         gyroADCf = gyro.notchFilter2ApplyFn((filter_t *)&gyro.notchFilter2[axis], gyroADCf);
@@ -81,6 +86,11 @@ static FAST_CODE void GYRO_FILTER_FUNCTION_NAME(void)
                 GYRO_FILTER_DEBUG_SET(DEBUG_DYN_LPF, 3, lrintf(gyroADCf));  //!< Gyro After Dyn Notch (dbg-axis) [unit:dps]
             }
         }
+#endif
+
+#ifdef USE_FREESTYLE_FILTERS
+        // FREESTYLE: gyro ABG, Kalman noise update, Smith predictor
+        gyroADCf = freestyleGyroPostFilter(axis, gyroADCf);
 #endif
 
         // DEBUG_GYRO_FILTERED records the scaled, filtered, after all software filtering has been applied.

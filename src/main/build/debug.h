@@ -223,6 +223,10 @@ typedef enum {
     DEBUG_AUTOPILOT_CLIMB,
     DEBUG_AUTOPILOT_GUIDANCE,
     DEBUG_AUTOPILOT_LANDING,
+    // FREESTYLE: fork debug modes. Keep these last when rebasing so upstream
+    // modes keep their indices; Blackbox Explorer will show them by number.
+    DEBUG_KALMAN,
+    DEBUG_SMITH_PREDICTOR,
     DEBUG_COUNT
 } debugType_e;
 

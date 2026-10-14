@@ -59,6 +59,8 @@
 #include "sensors/gyro.h"
 #include "sensors/gyro_init.h"
 
+#include "freestyle/freestyle_filters.h"  // FREESTYLE
+
 #if ((TARGET_FLASH_SIZE > 128) && (defined(USE_GYRO_SPI_ICM20601) || defined(USE_GYRO_SPI_ICM20689) || defined(USE_GYRO_SPI_MPU6500)))
 #define USE_GYRO_SLEW_LIMITER
 #endif

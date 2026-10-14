@@ -152,6 +152,8 @@
 
 #include "settings.h"
 
+#include "freestyle/freestyle_config.h"  // FREESTYLE
+
 #if defined(USE_POSITION_HOLD)
 const char * const lookupTablePosHoldSource[] = {
     "AUTO", "GPS_ONLY", "OPTICALFLOW_ONLY"
@@ -2279,6 +2281,11 @@ const clivalue_t valueTable[] = {
     { "gimbal_stabilisation",      VAR_INT8 | MASTER_VALUE, .config.minmaxUnsigned = { 0, 7 }, PG_GIMBAL_TRACK_CONFIG, offsetof(gimbalTrackConfig_t, gimbal_stabilisation) },
     { "gimbal_sensitivity",        VAR_INT8 | MASTER_VALUE, .config.minmaxUnsigned = { -16, 15 }, PG_GIMBAL_TRACK_CONFIG, offsetof(gimbalTrackConfig_t, gimbal_sensitivity) },
     { "gimbal_uart",               VAR_INT8 | MASTER_VALUE | MODE_LOOKUP_IDENTIFIER, .config.identifier = { IDENTIFIER_LOOKUP_SERIAL_PORT }, PG_GIMBAL_TRACK_CONFIG, offsetof(gimbalTrackConfig_t, gimbal_uart) },
+#endif
+
+#ifdef USE_FREESTYLE
+// FREESTYLE: fork settings
+#include "freestyle/freestyle_settings.inc"
 #endif
 };
 
