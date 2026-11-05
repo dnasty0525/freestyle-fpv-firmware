@@ -92,5 +92,9 @@ Measured with `make CONFIG=...` against the same build with
 | SPEEDYBEEF405V3 | +3.7 KB  | +5.1 KB  |
 | MATEKH743       | +2.9 KB  | +5.1 KB  |
 
+On STM32F7 boards the fork's filter code runs from flash rather than ITCM
+(F7 has only 16 KB of ITCM and stock Betaflight fills about 95% of it), so
+expect slightly more CPU per loop there than on H7.
+
 CPU cost per loop has not been measured on hardware yet. On F411 boards check
 `status` (CPU load) and `tasks` with all three enabled before flying.

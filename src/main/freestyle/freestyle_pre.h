@@ -29,6 +29,18 @@
 
 #define USE_FREESTYLE
 
+// Placement for the fork's per-loop filter code. STM32F7 has only 16KB of
+// ITCM and stock Betaflight already fills about 95% of it, so on F7 the fork
+// code runs from flash (through the ART accelerator and instruction cache).
+// H7 has 64KB of ITCM, so it keeps FAST_CODE. A board can override this.
+#ifndef FREESTYLE_FAST_CODE
+#if defined(STM32F7)
+#define FREESTYLE_FAST_CODE
+#else
+#define FREESTYLE_FAST_CODE FAST_CODE
+#endif
+#endif
+
 #if !defined(FREESTYLE_DISABLE_FILTERS) && !defined(USE_GYRO_IMUF9001)
 #define USE_FREESTYLE_KALMAN            // EmuFlight-style adaptive Kalman on gyro
 #define USE_FREESTYLE_SMITH_PREDICTOR   // gyro delay compensation

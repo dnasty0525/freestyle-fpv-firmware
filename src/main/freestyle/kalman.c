@@ -53,7 +53,7 @@ void freestyleKalmanInit(freestyleKalman_t *filter, uint16_t q, uint16_t w, floa
     pt1FilterInit(&filter->kFilter, pt1FilterGain(KALMAN_GAIN_LPF_HZ, dT));
 }
 
-FAST_CODE float freestyleKalmanApply(freestyleKalman_t *filter, float input)
+FREESTYLE_FAST_CODE float freestyleKalmanApply(freestyleKalman_t *filter, float input)
 {
     // project the state ahead using the last change
     filter->x += (filter->x - filter->lastX) * filter->k;
@@ -79,7 +79,7 @@ FAST_CODE float freestyleKalmanApply(freestyleKalman_t *filter, float input)
 
 // Called with the fully filtered gyro rate, so the noise estimate reflects
 // what the PID loop actually sees.
-FAST_CODE void freestyleKalmanUpdateVariance(freestyleKalman_t *filter, float filteredRate)
+FREESTYLE_FAST_CODE void freestyleKalmanUpdateVariance(freestyleKalman_t *filter, float filteredRate)
 {
     const uint16_t i = filter->windex;
 

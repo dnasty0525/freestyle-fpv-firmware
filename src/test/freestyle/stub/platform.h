@@ -7,3 +7,4 @@
 #define FAST_CODE_PREF
 #define FAST_DATA_ZERO_INIT
 #define FAST_DATA
+#define FREESTYLE_FAST_CODE

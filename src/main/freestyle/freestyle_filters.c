@@ -89,7 +89,7 @@ void freestyleGyroFiltersInit(uint32_t looptimeUs)
 }
 
 // After the RPM filter, before the static notches and lowpass.
-FAST_CODE float freestyleGyroPreFilter(int axis, float gyroRate)
+FREESTYLE_FAST_CODE float freestyleGyroPreFilter(int axis, float gyroRate)
 {
 #ifdef USE_FREESTYLE_KALMAN
     if (kalmanEnabled[axis]) {
@@ -109,7 +109,7 @@ FAST_CODE float freestyleGyroPreFilter(int axis, float gyroRate)
 }
 
 // After the dynamic notch; the value returned becomes gyro.gyroADCf.
-FAST_CODE float freestyleGyroPostFilter(int axis, float gyroRate)
+FREESTYLE_FAST_CODE float freestyleGyroPostFilter(int axis, float gyroRate)
 {
 #ifdef USE_FREESTYLE_ABG
     if (gyroAbgEnabled) {
@@ -156,7 +156,7 @@ void freestyleDtermFiltersInit(float dT)
 }
 
 // After the D-term notch and lowpass filters, before the derivative is taken.
-FAST_CODE float freestyleDtermApply(int axis, float gyroRateDterm)
+FREESTYLE_FAST_CODE float freestyleDtermApply(int axis, float gyroRateDterm)
 {
 #ifdef USE_FREESTYLE_ABG
     if (dtermAbgEnabled) {

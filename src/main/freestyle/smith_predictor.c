@@ -48,7 +48,7 @@ void smithPredictorInit(smithPredictor_t *sp, bool enabled, uint8_t strengthPerc
     pt1FilterInit(&sp->correctionFilter, pt1FilterGain(MAX(filterHz, 1), looptimeUs * 1e-6f));
 }
 
-FAST_CODE float smithPredictorApply(smithPredictor_t *sp, float gyroFiltered)
+FREESTYLE_FAST_CODE float smithPredictorApply(smithPredictor_t *sp, float gyroFiltered)
 {
     if (!sp->enabled) {
         return gyroFiltered;

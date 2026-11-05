@@ -57,7 +57,7 @@ void abgFilterInit(abgFilter_t *filter, uint16_t alpha, uint16_t boostGain, uint
     filter->halfLife = halfLife != 0 ? powf(0.5f, dT / (halfLife / 100.0f)) : 1.0f;
 }
 
-FAST_CODE float abgFilterApply(filter_t *filterPtr, float input)
+FREESTYLE_FAST_CODE float abgFilterApply(filter_t *filterPtr, float input)
 {
     abgFilter_t *filter = (abgFilter_t *)filterPtr;
 
