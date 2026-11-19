@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Freestyle Setup</title>
+<meta name="description" content="Set up a freestyle FPV quad in a few minutes: frame preset, receiver, switches and motors.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23e8590c' stroke-width='2.4'%3E%3Ccircle cx='8' cy='8' r='5'/%3E%3Ccircle cx='24' cy='8' r='5'/%3E%3Ccircle cx='8' cy='24' r='5'/%3E%3Ccircle cx='24' cy='24' r='5'/%3E%3Cpath d='M11 11l10 10M21 11L11 21'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="8" cy="8" r="5"/><circle cx="24" cy="8" r="5"/><circle cx="8" cy="24" r="5"/><circle cx="24" cy="24" r="5"/><path d="M11 11l10 10M21 11L11 21"/></svg>
+    <span>Freestyle Setup</span>
+  </div>
+  <div id="conn" class="conn" aria-live="polite"></div>
+</header>
+
+<div class="layout">
+  <nav id="rail" class="rail" aria-label="Setup steps"></nav>
+  <main id="main" class="main"></main>
+</div>
+
+<details id="logbox" class="logbox">
+  <summary>Flight controller log</summary>
+  <pre id="log"></pre>
+</details>
+
+<script src="js/fclink.js"></script>
+<script src="js/presets.js"></script>
+<script src="js/transports.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

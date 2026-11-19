@@ -31,6 +31,8 @@ src/main/freestyle/
   smith_predictor.[ch]              ported from EmuFlight
   abg_filter.[ch]                   ported from EmuFlight
 src/test/freestyle/                 parity test against EmuFlight's algorithms
+configurator/                       Freestyle Setup web wizard (see configurator/README.md)
+.github/workflows/freestyle-setup.yml  tests the wizard against SITL, publishes it to Pages
 docs/freestyle/                     these docs
 ```
 
